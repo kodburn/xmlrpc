@@ -32,6 +32,7 @@ var unmarshalTests = []struct {
 	{100, new(*int), "<value><int>100</int></value>"},
 	{389451, new(*int), "<value><i4>389451</i4></value>"},
 	{int64(45659074), new(*int64), "<value><i8>45659074</i8></value>"},
+	{6534763432, new(*int64), "<value><long>6534763432</long></value>"},
 
 	// string
 	{"Once upon a time", new(*string), "<value><string>Once upon a time</string></value>"},

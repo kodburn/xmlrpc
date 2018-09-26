@@ -47,8 +47,10 @@ func encodeValue(val reflect.Value) ([]byte, error) {
 		b, err = encodeSlice(val)
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		b = []byte(fmt.Sprintf("<int>%s</int>", strconv.FormatInt(val.Int(), 10)))
-	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
+	case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32:
 		b = []byte(fmt.Sprintf("<i4>%s</i4>", strconv.FormatUint(val.Uint(), 10)))
+	case reflect.Uint64:
+		b = []byte(fmt.Sprintf("<long>%s</long>", strconv.FormatUint(val.Uint(), 10)))
 	case reflect.Float32, reflect.Float64:
 		b = []byte(fmt.Sprintf("<double>%s</double>",
 			strconv.FormatFloat(val.Float(), 'g', -1, val.Type().Bits())))
